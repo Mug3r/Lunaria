@@ -39,7 +39,7 @@ public class Level2State extends GameState {
 		
 		tileMap = new TileMap(30);
 		tileMap.loadTiles("/Tilesets/Tileset.gif");
-		tileMap.loadMap("/Maps/Level 2.map");
+		tileMap.loadMap("/Maps/Level 2.txt");
 		tileMap.setPosition(0, 0);
 		
 		bg = new Background("/Backgrounds/grassbg1.gif", 0.1);
