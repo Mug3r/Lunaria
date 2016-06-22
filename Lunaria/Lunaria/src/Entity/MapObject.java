@@ -21,7 +21,7 @@ public abstract class MapObject {
 	protected double dx;
 	protected double dy;
 	
-	//dimesions - "visible" dimensions
+	//Dimensions - "visible" dimensions
 	protected int width;
 	protected int height;
 	

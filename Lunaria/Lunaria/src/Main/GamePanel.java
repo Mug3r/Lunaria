@@ -3,6 +3,8 @@ package Main;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JPanel;
 
@@ -50,7 +52,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	}
 	
 	private void init(){
-		
+				
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		g = (Graphics2D) image.getGraphics();
 		

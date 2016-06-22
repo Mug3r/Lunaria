@@ -2,6 +2,8 @@ package GameState;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 
 import TileMap.Background;
 
@@ -20,20 +22,34 @@ public class MenuState extends GameState {
 	private Font titleFont;
 	
 	private Font font;
+	private Font bodyFont;
 	
 	public MenuState(GameStateManager gsm){
 		
 		this.gsm = gsm;
+		try {
+			File font_file = new File("Resources/Fonts/FairyDustB.ttf");
+			font = Font.createFont(Font.TRUETYPE_FONT, font_file);
+			titleFont = font.deriveFont(60f);
+			bodyFont = font.deriveFont(20f);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		try{
 		
+			
 			bg = new Background("/Backgrounds/menubg.gif", 1);
 			bg.setVector(-0.1,  0);
 			
 			titleColor = new Color(255, 249, 200);
-			titleFont = new Font("FairydustB", Font.PLAIN, 60);
 			
-			font = new Font("FairydustB", Font.PLAIN, 20);
+			
+			
 		}
 		catch(Exception e){
 			e.printStackTrace();}
@@ -54,7 +70,7 @@ public class MenuState extends GameState {
 		g.drawString("Lunaria", 75, 70);
 		
 		// draw menu options
-		g.setFont(font);
+		g.setFont(bodyFont);
 		for(int i = 0; i < options. length; i++){
 			if(i == currentChoice){
 				g.setColor(Color.WHITE);
