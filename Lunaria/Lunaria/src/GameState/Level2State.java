@@ -45,7 +45,7 @@ public class Level2State extends GameState {
 		bg = new Background("/Backgrounds/grassbg1.gif", 0.1);
 		
 		player = new Player(tileMap);
-		player.setPosition(100,100);
+		player.setPosition(56,55);
 		
 		populateEnemies();
 		
