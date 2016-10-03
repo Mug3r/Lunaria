@@ -16,7 +16,7 @@ public class Background {
 	private double dy;
 	
 	private double moveScale;
-	//Constructor
+	//Constructor sets variables and creates new object
 	public Background(String s, double ms){
 		
 		try{
@@ -34,17 +34,17 @@ public class Background {
 		this.x = (x * moveScale) % GamePanel.WIDTH;
 		this.y = (y * moveScale) % GamePanel.HEIGHT;		
 	}
-	
+	//Sets direction of background
 	public void setVector(double dx, double dy){
 		this.dx = dx;
 		this.dy = dy;
 	}
-	
+	//updates background
 	public void update(){
 		x += dx;
 		y += dy;
 	}
-	
+	//draw the background
 	public void draw(Graphics2D g){
 		g.drawImage(image, (int) x, (int) y, null);
 		if(x < 0){
