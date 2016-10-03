@@ -30,7 +30,7 @@ public class GameStateManager {
 		listen = true;
 		
 	}
-	
+	//Loads the state selected by the integer value parsed
 	private void loadState(int state){
 		switch (state){
 		
@@ -46,14 +46,14 @@ public class GameStateManager {
 		
 		}
 	}
-	
+	//Unlaods the parsed state index
 	private void unloadState(int state){
 		
 		listen = false;
 		gameStates[state] = null;
 		
 	}
-	
+	//Sets the game to the parsed state indexed
 	public void setState(int state){
 		
 		unloadState(currentState);
@@ -63,25 +63,25 @@ public class GameStateManager {
 		//gameStates[currentState].init();
 				
 	}
-	
+	//Updates the current state
 	public void update(){
 		try{
 		gameStates[currentState].update();}
 		catch(Exception e){}
 		
 	}
-	
+	//Draws the current state
 	public void draw(Graphics2D g){
 		try{
 		gameStates[currentState].draw(g);}
 		catch(Exception e){}
 		
 	}
-	
+	//detects keypresses and passes this into the state
 	public void keyPressed(int k){	
 		if(listen){gameStates[currentState].keyPressed(k);}
 	}
-	
+	//detects key releases and passes it on into the current state
 	public void keyReleased(int k){
 		if(listen){gameStates[currentState].keyReleased(k);}
 	}
