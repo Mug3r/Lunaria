@@ -11,7 +11,7 @@ import TileMap.TileMap;
 public class Ghoul extends Enemy {
 
 	private BufferedImage[] sprites;
-	
+	//Constructor sets the tilemap and the ghoul's variables
 	public Ghoul(TileMap tm){
 		
 		super(tm);
@@ -38,7 +38,7 @@ public class Ghoul extends Enemy {
 		right = true;
 		facingRight = true;
 	}
-	
+	//Gets the ghoul's next position based on its vector
 	private void getNextPosition(){
 		
 		//movement
@@ -59,7 +59,7 @@ public class Ghoul extends Enemy {
 			dy += fallSpeed;
 		}
 	}
-	
+	//Updates the ghoul object
 	public void update(){
 		
 		//update position
@@ -87,7 +87,7 @@ public class Ghoul extends Enemy {
 		}
 		animation.update();
 	}
-	
+	//Draws the ghoul object
 	public void draw(Graphics2D g){
 		
 		//if(offScreen()){return;}
