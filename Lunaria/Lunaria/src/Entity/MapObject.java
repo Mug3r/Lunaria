@@ -64,22 +64,22 @@ public abstract class MapObject {
 	protected double jumpStart;
 	protected double stopJumpSpeed;
 	
-	//constructor
+	//constructor sets which tilemap to use
 	public MapObject(TileMap tm){
 		tileMap = tm;
 		tileSize = tm.getTileSize();
 	}
-	
+	//Collision detection checks if rectangle hitboxes are intersecting
 	public boolean intersects(MapObject o){
 		Rectangle r1 = getRectangle();
 		Rectangle r2 = o.getRectangle();
 		return r1.intersects(r2);
 	}
-	
+	//returns the hitbox of the specific mapobject calling the method
 	public Rectangle getRectangle(){
 		return new Rectangle((int)x - cwidth, (int)y - cheight, cwidth, cheight);
 	}
-	
+	//Breaks each hitbox into a smaller collection of 4 hitboxes each 1 tile large and uses these for collisions of larger composite objects(player, and sprites of enemies)
 	public void calculateCorners(double x, double y){
 		
 		 int leftTile = (int)(x - cwidth / 2) / tileSize;
@@ -103,7 +103,7 @@ public abstract class MapObject {
 		
 		
 	}
-	
+	//Collision detection with the map and and tiles
 	public void checkTileMapCollision(){
 		
 		currCol = (int) x / tileSize;
@@ -166,39 +166,48 @@ public abstract class MapObject {
 				}
 		}
 	}
-	
+	//Returns the x position(right edge of the collsion box)
 	public int getx(){return (int) x;}
+	//Returns the y position(bottom edge of the collison box)
 	public int gety(){return (int) y;}
+	//Returns the width of the Actual object
 	public int getWidth(){return width;}
+	//Returns the height of the Actual object
 	public int getHeight(){return height;}
+	//Returns the width of the collision box
 	public int getCWidth(){return cwidth;}
+	//returns the height of the collision box
 	public int getCHeight(){return cheight;}
-	
+	//Sets the position of the collision box
 	public void setPosition(double x, double y){
 		this.x = x;
 		this.y = y;
 	}
-	
+	//Sets the vector(direction) of the collision box(decides the rate and direction of its movement)
 	public void setVector(double dx, double dy){
 		this.dx = dx;
 		this.dy = dy;
 	}
-	
+	//Sets the position of the map
 	public void setMapPosition(){
 		xmap = tileMap.getX();
 		ymap = tileMap.getY();
 	}
-	
+	//Sets if moving left
 	public void setLeft(boolean b){left = b;}
+	//Sets if moving right
 	public void setRight(boolean b){right = b;}
+	//Sets if moving up
 	public void setUp(boolean b){up = b;}
+	//Sets if moving down
 	public void setDown(boolean b){down = b;}
+	//Sets if moving jumping
 	public void setJumping(boolean b){jumping = b;}
-	
+	//Used to detect if the object is off the screen/game window
 	public boolean offScreen(){
 		return x + xmap + width < 0 || x + xmap - width > GamePanel.WIDTH || y + ymap + height < 0 || y + ymap - height > GamePanel.HEIGHT;
 	}
-	
+	//Draws the map object
 	public void draw(Graphics2D g){
 		if(facingRight){
 			g.drawImage(animation.getImage(), (int)(x + xmap - width / 2), (int) (y + ymap - height / 2), null);
