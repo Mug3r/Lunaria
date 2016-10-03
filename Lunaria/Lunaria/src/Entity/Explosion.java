@@ -18,7 +18,7 @@ public class Explosion {
 	private BufferedImage[] sprites;
 	
 	private boolean remove;
-	
+	//Constructor takes position of the explosion laods the image and sets its dimensions.
 	public Explosion(int x, int y){
 		
 		this.x = x;
@@ -44,21 +44,21 @@ public class Explosion {
 		animation.setDelay(70);
 		
 	}
-	
+	//Runs the animation and at the end removes the image
 	public void update(){
 		animation.update();
 		if(animation.hasPlayedOnce()){
 			remove = true;
 		}
 	}
-	
+	//Returns wether or not the explosion image should be remvoed
 	public boolean shouldRemove(){return remove;}
-	
+	//Sets the explosions position on the map(not screen)
 	public void setMapPosition(int x, int y){
 		xmap = x;
 		ymap = y;
 	}
-	
+	//Draws the Explosion to the screen
 	public void draw(Graphics2D g){
 		g.drawImage(animation.getImage(), x+ xmap - width / 2, y + ymap - height / 2, null);
 	}
