@@ -11,7 +11,7 @@ public class ImageManager {
 	
 	public static BufferedImage[] ghoulSprites = load("/Sprites/Enemies/Ghoul.gif", 30, 30);
 	public static BufferedImage[] worldGate = load("/Sprites/Objects/worldGate.gif", 30, 60);
-	
+	//loads an array of buffered images from a sprite sheet
 	public static BufferedImage[] load(String s, int w, int h) {
 		BufferedImage[] ret;
 		try {
