@@ -23,7 +23,7 @@ public class MenuState extends GameState {
 	
 	private Font font;
 	private Font bodyFont;
-	
+	//Constructor loads fonts and gamestatemanager variables
 	public MenuState(GameStateManager gsm){
 		
 		this.gsm = gsm;
@@ -55,11 +55,13 @@ public class MenuState extends GameState {
 			e.printStackTrace();}
 		
 	}
-	
+	//initiates the menu
 	public void init(){}
+	//updates the menu(background only)
 	public void update(){
 		bg.update();
 	}
+	//draws the menu
 	public void draw(Graphics2D g){
 		//draw backgorund
 		bg.draw(g);
@@ -83,7 +85,7 @@ public class MenuState extends GameState {
 			
 		}
 	}
-	
+	//Detects which option has been selects and loads that option
 	private void select(){
 		
 		if(currentChoice == 0){
@@ -93,7 +95,7 @@ public class MenuState extends GameState {
 		}
 		if(currentChoice == 1){
 			
-			//
+			//No help feature yet
 			
 		}
 		if(currentChoice == 2){	
@@ -101,6 +103,7 @@ public class MenuState extends GameState {
 		}
 		
 	}
+	//Detects keypresses and changes the current menu option selected
 	public void keyPressed(int k){
 		if( k == KeyEvent.VK_ENTER){
 			select();			
@@ -118,6 +121,7 @@ public class MenuState extends GameState {
 			}		
 		}
 	}
+	//Detects key releases
 	public void keyReleased(int k){
 		
 	}
