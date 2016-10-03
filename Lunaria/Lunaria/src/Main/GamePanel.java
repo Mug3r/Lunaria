@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		setFocusable(true);
 		requestFocus();
 	}
-	
+	//Starts new threads and runs the addnotify method to make this Component displayable by connecting it to a native screen resource.
 	public void addNotify(){
 		
 		super.addNotify();
@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			
 		}
 	}
-	
+	//Initates the new game object.
 	private void init(){
 				
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -61,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		gsm = new GameStateManager();
 		
 	}
-	
+	//Game Loop runs the entire game and holds the main clock for updates and rendering
 	public void run(){
 		
 		init();
@@ -93,15 +93,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		}
 		
 	}
-	
+	//Updates the game(through the gamestatemanager)
 	private void update(){
 		gsm.update();
 	}
-	
+	//Draws the game(through gamestatemanager)
 	private void draw(){
 		gsm.draw(g);
 	}
-	
+	//Compiles graphics and then draws them to the current bottom most buffer to be displayed once it reaches the top(repeats as new frames are added by the draw method below)
 	private void drawToScreen(){
 		
 		Graphics g2 = getGraphics();
@@ -109,7 +109,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		g2.dispose();
 		
 	}
-	
+	//Keypress detection methods
 	public void keyTyped(KeyEvent key){}
 	public void keyPressed(KeyEvent key){gsm.keyPressed(key.getKeyCode());}
 	public void keyReleased(KeyEvent key){gsm.keyReleased(key.getKeyCode());}
