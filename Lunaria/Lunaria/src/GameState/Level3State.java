@@ -12,6 +12,12 @@ import TileMap.Background;
 import TileMap.TileMap;
 import Audio.AudioPlayer;
 
+/*
+NB:
+
+All methods here are duplicate to those found in Level1State and as such comments will not be repeated
+*/
+
 public class Level3State extends GameState {
 
 	private TileMap tileMap;
@@ -42,7 +48,7 @@ public class Level3State extends GameState {
 		tileMap.loadMap("/Maps/Level 3.txt");
 		tileMap.setPosition(0, 0);
 		
-		bg = new Background("/Backgrounds/grassbg1.gif", 0.1);
+		bg = new Background("/Backgrounds/starsbg1.gif", 0.1);
 		
 		player = new Player(tileMap);
 		player.setPosition(39,202);
