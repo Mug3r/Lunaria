@@ -12,6 +12,13 @@ import TileMap.Background;
 import TileMap.TileMap;
 import Audio.AudioPlayer;
 
+/*
+NB: 
+
+All Comments here apply to levels 2 and 3's states. As such these comments will not be repeated in thsoe classes.
+
+*/
+
 public class Level1State extends GameState {
 
 	private TileMap tileMap;
@@ -27,14 +34,14 @@ public class Level1State extends GameState {
 	private AudioPlayer bgMusic;
 	
 	private int worldGateX = 1910;
-	
+	//Constructor creates a new object setting the gamestatemanager in use and runs the init method
 	public Level1State(GameStateManager gsm){
 		
 		this.gsm = gsm;
 		init();
 		
 	}
-	
+	//Initaites the new Level loading all variables, music and resources
 	public void init(){ 
 		
 		tileMap = new TileMap(30);
@@ -42,7 +49,7 @@ public class Level1State extends GameState {
 		tileMap.loadMap("/Maps/Level 1.txt");
 		tileMap.setPosition(0, 0);
 		
-		bg = new Background("/Backgrounds/grassbg1.gif", 0.1);
+		bg = new Background("/Backgrounds/starsbg1.gif", 0.1);
 		
 		player = new Player(tileMap);
 		player.setPosition(100,100);
@@ -58,7 +65,7 @@ public class Level1State extends GameState {
 		
 		
 	}
-	
+	//Loads enemies onto the map
 	private void populateEnemies(){
 		
 		enemies = new ArrayList<Enemy>();
@@ -74,7 +81,7 @@ public class Level1State extends GameState {
 		}
 		
 	}
-	
+	//Updates the state and all objects within it
 	public void update(){
 		
 		player.update();
@@ -112,7 +119,7 @@ public class Level1State extends GameState {
 			}
 		}
 	}
-	
+	//draws the current level and all objects on it
 	public void draw(Graphics2D g){
 		//draw bg
 		bg.draw(g);
@@ -141,7 +148,7 @@ public class Level1State extends GameState {
 	
 	
 	
-	
+	//detects key presses
 	public void keyPressed(int k){
 		//player movement
 		if(k == KeyEvent.VK_A){ player.setLeft(true);}
@@ -152,7 +159,7 @@ public class Level1State extends GameState {
 		if(k == KeyEvent.VK_SHIFT){ player.setGliding(true);}
 		if(k == KeyEvent.VK_V){ player.setFiring();}
 	}
-	
+	//detects key releases
 	public void keyReleased(int k){
 		if(k == KeyEvent.VK_A){ player.setLeft(false);}
 		if(k == KeyEvent.VK_D){ player.setRight(false);}
