@@ -30,10 +30,10 @@ public class Player extends MapObject {
 	private int soulBlastDamage;
 	private ArrayList<SoulBlast> soulBlasts;
 	
-	// Claw Attack
-	private boolean scratching;
-	private int scratchDamage;
-	private int scratchRange;
+	// Melee Attack, Removed to enrich gameplay(for now :) )
+	private boolean clawing;
+	private int clawDamage;
+	private int clawRange;
 	
 	//Gliding
 	private boolean gliding;
@@ -63,7 +63,7 @@ public class Player extends MapObject {
 		};
 	
 	private HashMap<String , AudioPlayer> sfx;
-	
+	//Constructor, Sets all the player's variables loads sprites and preps animations
 	public Player(TileMap tm){
 		
 		super(tm);
@@ -90,8 +90,8 @@ public class Player extends MapObject {
 		soulBlastDamage = 5;
 		soulBlasts = new ArrayList<SoulBlast>();
 		
-		scratchDamage = 8;
-		scratchRange = 40;
+		clawDamage = 8;
+		clawRange = 40;
 		
 		//load sprites
 try {
@@ -135,50 +135,55 @@ try {
 		
 		sfx = new HashMap<String, AudioPlayer>();
 		sfx.put("jump", new AudioPlayer("/SFX/jump.mp3"));
-		sfx.put("scratch", new AudioPlayer("/SFX/scratch.mp3"));
+		sfx.put("claw", new AudioPlayer("/SFX/scratch.mp3"));
 		
 	}
-	
+	//Returns the players current health
 	public int getHealth(){return health;}
+	//Returns the player's maximum possible health
 	public int getMaxHealth(){return maxHealth;}
+	//Returns the current amount of soul energy
 	public int getSoul(){return soul;}
+	//Returns the maximum amount of soul energy
 	public int getMaxSoul(){return maxSoul;}
-	
+	//Sets if the player is firing attacks
 	public void setFiring(){
 		firing = true;		
 	}
-	public void setScratching(){
-		scratching = true;
+	//Sets if the player is using their Melee attack
+	public void setClawing(){
+		clawing = true;
 	}
+	//Sets if the player is gliding
 	public void setGliding(boolean b){
 		gliding = b;
 	}
-	
+	//Checks the players current attacks, if they have hit any enemies.
 	public void checkAttack(ArrayList<Enemy> enemies){
 		// loop through enemies
 		for(int i = 0; i < enemies.size(); i ++){
 			
 			Enemy e = enemies.get(i);
 			
-			// scratch attack
+			// claw attack
 			
-			if(scratching){
+			if(clawing){
 				if(facingRight){
 					if(
 						e.getx() > x &&
-						e.getx() < x + scratchRange &&
+						e.getx() < x + clawRange &&
 						e.gety() > y - height / 2 &&
 						e.gety() < y + height / 2){
-							e.hit(scratchDamage);
+							e.hit(clawDamage);
 					}
 				}
 				else {
 					if(
 						e.getx() < x &&
-						e.getx() > x - scratchRange &&
+						e.getx() > x - clawRange &&
 						e.gety() > y - height / 2 &&
 						e.gety() < y + height / 2){
-							e.hit(scratchDamage);
+							e.hit(clawDamage);
 					}
 				}
 			}
@@ -207,7 +212,7 @@ try {
 		
 		
 	}
-	
+	//if the player is hit and not flinching they take damage, equal to the amount passed on by other objects
 	public void hit(int damage){
 		if(flinching){return;}
 		health -= damage;
@@ -218,7 +223,7 @@ try {
 		flinching = true;
 		flinchTimer = System.nanoTime();
 	}
-	
+	//Gets the players next amp position using their current vextor
 	private void getNextPosition(){
 		// movement
 		if(left) {
@@ -273,7 +278,7 @@ try {
 		}
 	}
 	}
-	
+	//Updates the player and all their variables.
 	public void update(){
 		//update position
 		getNextPosition();
@@ -368,7 +373,7 @@ try {
 			if(left) {facingRight = false;}
 		}
 	}
-	
+	//Draw the player
 	public void draw(Graphics2D g){
 		
 		setMapPosition();
@@ -385,7 +390,7 @@ try {
 		
 		super.draw(g);
 	}
-	
+	//sets the player's animation to the parsed frame
 	private void setAnimation(int i) {
 		currentAction = i;
 		animation.setFrames(sprites.get(currentAction));
