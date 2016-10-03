@@ -11,7 +11,7 @@ public class HUD {
 	
 	private BufferedImage image;
 	private Font font;
-	
+	//Constructor Sets which player the HUD should display info for and loads the HUD images and text
 	public HUD(Player p){
 		player = p;
 		try{
@@ -21,7 +21,7 @@ public class HUD {
 			e.printStackTrace();
 			}
 	}
-	
+	//Draws the HUD
 	public void draw(Graphics2D g){
 		
 		g.drawImage(image, 0, 3, null);
