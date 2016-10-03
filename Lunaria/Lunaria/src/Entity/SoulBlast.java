@@ -13,7 +13,7 @@ public class SoulBlast extends MapObject{
 	private boolean remove;
 	private BufferedImage[] sprites;
 	private BufferedImage[] hitSprites;
-
+	//Constructor, gets the current tile map and sets the direction of the attack to decide its direction and set other variables
 	public SoulBlast(TileMap tm, boolean right){
 		
 		super(tm);
@@ -54,7 +54,7 @@ public class SoulBlast extends MapObject{
 		}
 		
 	}
-	
+	//Sets if the soul blast has hit a target and chenges to its explosion frame and animates then sets vector to 0(stops moving)
 	public void setHit(){
 		if(hit){return;}
 		hit = true;
@@ -62,9 +62,9 @@ public class SoulBlast extends MapObject{
 		animation.setDelay(70);
 		dx = 0;
 	}
-	
+	//Returns if the soul blast should be removed
 	public boolean shouldRemove(){return remove;}		
-	
+	//Updates the soul blast object
 	public void update(){
 		
 		checkTileMapCollision();
@@ -78,7 +78,7 @@ public class SoulBlast extends MapObject{
 		if(hit && animation.hasPlayedOnce()){ remove = true;}
 		
 	}
-	
+	//Draws the soul blast object
 	public void draw(Graphics2D g){
 		
 		setMapPosition();
