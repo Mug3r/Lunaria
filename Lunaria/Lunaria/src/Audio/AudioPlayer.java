@@ -7,6 +7,7 @@ public class AudioPlayer {
 
 	private Clip clip;
 	
+	//Constructor
 	public AudioPlayer(String s){
 		
 		try{
@@ -30,7 +31,7 @@ public class AudioPlayer {
 		}
 		
 	}
-	
+	//Starts playing the selected clip from the start(if no clip goes to the stop method)
 	public void play(){
 		if(clip == null){return;}
 		stop();
@@ -38,11 +39,11 @@ public class AudioPlayer {
 		clip.setFramePosition(0);
 		clip.start();
 	}
-	
+	//Ends/Pauses the current clip
 	public void stop(){
 		if(clip.isRunning()) {clip.stop();}
 	}
-	
+	//Termiantes the clip making it unresumable.
 	public void close(){
 		stop();
 		clip.close();
