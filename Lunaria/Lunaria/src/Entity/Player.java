@@ -286,9 +286,9 @@ try {
 		setPosition(xtemp,ytemp);
 		
 		// check attack stopped
-		if(currentAction == SCRATCHING){
+		/*if(currentAction == SCRATCHING){
 			if(animation.hasPlayedOnce()) {scratching = false;}
-		}
+		}*/
 		if(currentAction == SOULBLAST){
 			if(animation.hasPlayedOnce()) {firing = false;}
 		}
@@ -324,13 +324,13 @@ try {
 		}
 		
 		//set animations
-		if(scratching){
+		/*if(scratching){
 			
 			if(currentAction != SCRATCHING){
 				sfx.get("scratch").play();
 				setAnimation(SCRATCHING);		
 			}
-		} else if(firing){
+		} else */if(firing){
 			if(currentAction != SOULBLAST){
 				setAnimation(SOULBLAST);		
 			}

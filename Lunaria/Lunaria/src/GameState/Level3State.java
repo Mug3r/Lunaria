@@ -34,7 +34,7 @@ public class Level3State extends GameState {
 	
 	private int worldGateX = 4158;
 	
-	public Level2State(GameStateManager gsm){
+	public Level3State(GameStateManager gsm){
 		
 		this.gsm = gsm;
 		init();
